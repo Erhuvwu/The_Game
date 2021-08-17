@@ -4,6 +4,7 @@ body{
 }
 header{
     font-size: 15px;
+    font-weight: bold;
     border: 1px solid gray;
     padding: 2% 2% 2%;
 }
@@ -14,9 +15,29 @@ header{
     border-radius: 5%;
     padding: 20px 20px 20px;
     margin: 20% 25% 40% 40%;
-    text-align: center;   
+    text-align: center; 
+    display: none;  
 }
 .title{
     padding-bottom: 5%;
     padding-top: 5%;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+.board{
+    height: 100%;
+    height: 100%;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, auto);
+}
+.cell{
+    height: 100px;
+    width: 100px;
+    background-color: green;
+    border: 1px solid red;
+}
+.turn{
+    margin: 10% 10%;
 }
