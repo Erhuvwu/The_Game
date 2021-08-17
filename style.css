@@ -1,0 +1,22 @@
+
+body{
+    background: tomato;
+}
+header{
+    font-size: 15px;
+    border: 1px solid gray;
+    padding: 2% 2% 2%;
+}
+.container{
+    background: white;
+    width: 20vw;
+    height: 20vh;
+    border-radius: 5%;
+    padding: 20px 20px 20px;
+    margin: 20% 25% 40% 40%;
+    text-align: center;   
+}
+.title{
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
