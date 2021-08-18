@@ -25,6 +25,9 @@ header{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 .board{
+    display: none;
+}
+.board-part{
     height: 100%;
     height: 100%;
     display: grid;
@@ -37,7 +40,13 @@ header{
     width: 100px;
     background-color: green;
     border: 1px solid red;
+    text-align: center;
+    line-height: 100px;
+    color: tomato;
 }
-.turn{
-    margin: 10% 10%;
+.opponents{
+    margin: 9% 10%;
+}
+.X-active{
+    background: rgb(199, 63, 39);
 }
