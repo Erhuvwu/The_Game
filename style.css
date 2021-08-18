@@ -8,15 +8,18 @@ header{
     border: 1px solid gray;
     padding: 2% 2% 2%;
 }
-.container{
+.container, .outcome{
     background: white;
     width: 20vw;
     height: 20vh;
     border-radius: 5%;
     padding: 20px 20px 20px;
     margin: 20% 25% 40% 40%;
-    text-align: center; 
-    display: none;  
+    text-align: center;
+      
+}
+.hideContainer{
+   visibility: hidden;
 }
 .title{
     padding-bottom: 5%;
@@ -25,7 +28,10 @@ header{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 .board{
-    display: none;
+    visibility: hidden;
+}
+.showBoard{
+    visibility: visible;
 }
 .board-part{
     height: 100%;
@@ -49,4 +55,19 @@ header{
 }
 .X-active{
     background: rgb(199, 63, 39);
+}
+.win{
+    padding: 30px;
+    font-size: large;
+    font-weight: bold;
+}
+.start-button{
+    border-radius: 5px;
+    background: rgb(199, 63, 39);
+    color: white;
+    padding: 6px;
+    border: none;
+}
+.outcome{
+    display: none;
 }

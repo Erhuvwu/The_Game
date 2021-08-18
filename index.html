@@ -11,10 +11,10 @@
     <div class="container">
       <header>Tic Tac Toe</header>  
       <div class="main">
-        <div class="title">  Select your opponent</div>
+        <div class="title">  Who do you represent?</div>
         <div class="choice">
-            <button>Opponent (X)</button>
-            <button>Opponent (O)</button>
+            <button onclick= "xButton()" class="Opponent-X">Opponent (X)</button>
+            <button  onclick= "yButton()" class="Opponent-O">Opponent (O)</button>
         </div>
       </div>
     </div>
@@ -23,8 +23,8 @@
     <div class="board">
         <div>
             <div class="opponents">
-                <button class="X-active">Opponent (X) turn</button>
-                <button>Opponent (O) turn</button>
+                <button class="opponent-Xturn">Opponent (X) turn</button>
+                <button class="opponent-Oturn">Opponent (O) turn</button>
             </div>
         </div>
         <div class="board-part">
@@ -41,7 +41,9 @@
     </div>
     <div class="outcome">
         <div class="win">Yippee!!!Opponent X won</div>
-        <button>Start Again</button>
+        <div>
+            <button class="start-button">Start Again</button>
+        </div>
     </div>
 
 
