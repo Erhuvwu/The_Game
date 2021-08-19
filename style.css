@@ -46,6 +46,9 @@ header{
     width: 100px;
     background-color: green;
     border: 1px solid red;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
     text-align: center;
     line-height: 100px;
     color: tomato;
@@ -53,15 +56,18 @@ header{
 .opponents{
     margin: 9% 10%;
 }
-.X-active{
-    background: rgb(199, 63, 39);
+.opponent-Xturn{
+    background: rgb(172, 53, 32)
+}
+.opponent-Oturn{
+    background: rgb(218, 208, 208)
 }
 .win{
     padding: 30px;
     font-size: large;
     font-weight: bold;
 }
-.start-button{
+.restart-button{
     border-radius: 5px;
     background: rgb(199, 63, 39);
     color: white;
