@@ -3,7 +3,9 @@ body{
     background: tomato;
 }
 header{
-    font-size: 15px;
+    font-size: large;
+    font-weight: bold;
+    /* font-size: 15px; */
     font-weight: bold;
     border: 1px solid gray;
     padding: 2% 2% 2%;
@@ -30,8 +32,29 @@ header{
 /* .board{
     visibility: hidden;
 } */
+.Opponent-X{
+    border-radius: 5px;
+    background: rgb(199, 63, 39);
+    color: white;
+    padding: 6px;
+    border: none;
+    font-size: large;
+    font-weight: bold;
+}
+.Opponent-O{
+    border-radius: 5px;
+    background: rgb(199, 63, 39);
+    color: white;
+    padding: 6px;
+    border: none;
+    font-size: large;
+    font-weight: bold;
+}
 .showBoard{
     visibility: visible;
+}
+.slider{
+    left: 50%;
 }
 .board-part{
     height: 100%;
@@ -44,23 +67,37 @@ header{
 .cell{
     height: 100px;
     width: 100px;
-    background-color: green;
-    border: 1px solid red;
+    background-color: white;
+    border: 1px solid tomato;
     /* display: flex;
     justify-content: center;
     align-items: center; */
     text-align: center;
     line-height: 100px;
-    color: tomato;
+    color: rgb(172, 53, 32);
 }
 .opponents{
     margin: 9% 10%;
+    text-align: center;
+    /* padding-top: 1%; */
 }
 .opponent-Xturn{
-    background: rgb(172, 53, 32)
+    border-radius: 5px;
+    background: rgb(199, 63, 39);
+    color: white;
+    padding: 6px;
+    border: none;
+    font-size: large;
+    font-weight: bold;
 }
 .opponent-Oturn{
-    background: rgb(218, 208, 208)
+    border-radius: 5px;
+    background: rgb(199, 63, 39);
+    color: white;
+    padding: 6px;
+    border: none;
+    font-size: large;
+    font-weight: bold;
 }
 .win{
     padding: 30px;

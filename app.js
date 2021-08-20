@@ -10,13 +10,13 @@ const container1 = document.querySelector(".outcome")
 const result = container1.querySelector(".win")
 const restartButton = container1.querySelector(".restart-button")
 
-window.onload = () =>{ // anytime the window loads
-   
-    xButton = ()=>{
+window.onload = () => { // anytime the window loads
+
+     xButton = () => {
         container.classList.add("hideContainer"); //when opponentX button is clicked, hide the container
         boardSurface.classList.add("showBoard"); //when opponentX button is clicked, show the board game
     }
-    yButton = ()=>{
+     yButton = () => {
         container.classList.add("hideContainer");//when opponentO button is clicked, hide the container
         boardSurface.classList.add("showBoard"); //when opponentO button is clicked, show the board game
     }
@@ -39,9 +39,9 @@ const OpponentX_win = "Yipeee! Opponent(X) won"
 const OpponentO_win = "Yipeee! Opponent(O) won"
 const draw = "It's a draw!"
 
-
-function handleResultValidation() {
-    let roundWon = false;
+// check if there is a winner
+function checkResult() {
+    let gameWon = false;
     for (let i = 0; i <= 7; i++) {
         const winCondition = positionsOfWin[i];
         const a = playBoard[winCondition[0]];
@@ -51,98 +51,101 @@ function handleResultValidation() {
             continue;
         }
         if (a === b && b === c) {
-            roundWon = true;
+            gameWon = true;
             break;
         }
     }
 
-if (roundWon) {
-    winner(select=="X" ? OpponentX_win : OpponentO_win);
-    
-        return;
+    if (gameWon) {
+        winner(select ==="X" ? OpponentX_win : OpponentO_win);
+        isGameOn = false
+        return
     }
 
-if (!playBoard.includes(''))
-   // winner(TIE);
-   console.log("no winner")
+    if (!playBoard.includes('')) {//if no winner and no empty cell left
+        winner(draw);
+    }
 }
-const winner = (type)=>{
-    switch(type){
+const winner = (type) => {//switch between the  game results
+    switch (type) {
         case OpponentO_win:
-            result.innerHTML = 'Yipeee! Opponent(O) won'
+            result.innerHTML = 'Yipee! Opponent(O) won'
             break
         case OpponentX_win:
-            result.innerHTML = 'Yipeee! Opponent(X) won'
+            result.innerHTML = 'Yipee! Opponent(X) won'
             break
         case draw:
-            result.innerText = 'It is a draw!'
+            result.innerText = 'Urgh! It is a draw!'
     }
-    result.classList.add("showOutcome");
+    console.log(`winner is`)
+    result.classList.add("showOutcome")
 }
-
-const isValidAction = (cell) => {
-    if (cell.innerHTML === 'X' || cell.innerHTML === 'O'){
+const updatePlayBoard = (i) => {
+    playBoard[i] = select;
+}
+//make sure the opponent plays on empty cells
+const isCellFilled = (cell) => {
+    if (cell.innerText === 'X' || cell.innerText === 'O') {
         return false;
     }
 
     return true;
 }
 
-const updatePlayBoard =  (i) => {
-    playBoard[i] = select;
-}
-
-myFunction=()=>{
+myFunction = () => {
     return 'X'
 }
-myFunction1=()=>{
+myFunction1 = () => {
     return "O"
 }
-    let x = opponentXturn;
-    let o = opponentOturn; 
-    let select ="" 
+let x = opponentXturn;
+let o = opponentOturn;
+let select = ""
 
-    if(x!==""){
-        select = "X"
-    }else{
-        select = "O"
-    }
-   
-const computerMove=()=>{
+if (x !== "") {
+    select = "X"
+} else {
+    select = "O"
+}
+
+const computerMove = () => {
     opponentOturn.style.backgroundColor = "blue"
     let random = Math.floor(Math.random() * 8)
-    if(!cells[random].innerHTML){
+    if (!cells[random].innerHTML) {
         console.log("found an empty cell")
-        if(select=="X"){
+        if (select == "X") {
             cells[random].innerHTML = "O"
-
-        }else{
+            select = "O"
+        } else {
             cells[random].innerHTML = "X"
+            select = "X"
         }
-    }else{
+    } else {
         computerMove()
     }
-   // opponentOturn.style.backgroundColor = "purple"
 }
-    for(let box of cells){
-        box.addEventListener('click', ()=>{
-            if(isValidAction(box) && isGameOn) {
+//opponentOturn.style.backgroundColor = "purple"
+for (let box of cells) {
+    box.addEventListener('click', () => {
+        opponentXturn.style.backgroundColor = "purple"
+        if (isCellFilled(box) && isGameOn) {
             console.log("clicked a box")
             box.innerText = select
-            let delayTime = ((Math.random() * 1500) + 200).toFixed()//computer delays randomly b4 playing
-            setTimeout(()=>{
+            let delayTime = ((Math.random() * 800) + 200).toFixed()//computer delays randomly b4 playing
+            setTimeout(() => {
                 computerMove()
             }, delayTime)//passing the delay time
         }
-        })
-        handleResultValidation()
-    } 
-    restartButton.onclick=()=>{
-        window.location.reload()
-    }  
-    
- 
-    
+    })
+    updatePlayBoard()
+    checkResult()
+}
+restartButton.onclick = () => {
+    window.location.reload()
+}
+
+
+
 
 
 
