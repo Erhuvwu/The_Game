@@ -22,7 +22,7 @@ window.onload = () =>{ // anytime the window loads
     }
 }
 let playBoard = ["", "", "", "", "", "", "", "", ""]
-const positionOfWin = [
+const positionsOfWin = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -36,6 +36,53 @@ const positionOfWin = [
 const OpponentX_win = "Yipeee! Opponent(X) won"
 const OpponentO_win = "Yipeee! Opponent(O) won"
 const draw = "It's a draw!"
+
+function handleResultValidation() {
+    let roundWon = false;
+    for (let i = 0; i <= 7; i++) {
+        const winCondition = positionsOfWin[i];
+        const a = playBoard[winCondition[0]];
+        const b = playBoard[winCondition[1]];
+        const c = playBoard[winCondition[2]];
+        if (a === '' || b === '' || c === '') {
+            continue;
+        }
+        if (a === b && b === c) {
+            roundWon = true;
+            break;
+        }
+    }
+
+if (roundWon) {
+    winner(select=="X" ? OpponentX_win : OpponentO_win);
+    
+        return;
+    }
+
+if (!playBoard.includes(''))
+   // winner(TIE);
+   console.log("no winner")
+}
+const winner = (type)=>{
+    switch(type){
+        case OpponentO_win:
+            result.innerHTML = 'Yipeee! Opponent(O) won'
+            break
+        case OpponentX_win:
+            result.innerHTML = 'Yipeee! Opponent(X) won'
+            break
+        case draw:
+            result.innerText = 'It is a draw!'
+    }
+    result.classList.add("showOutcome");
+}
+const isValidAction = (cell) => {
+    if (cell.innerHTML === 'X' || cell.innerHTML === 'O'){
+        return false;
+    }
+
+    return true;
+}
 
 myFunction=()=>{
     return 'X'
@@ -53,10 +100,9 @@ myFunction1=()=>{
         select = "O"
     }
    
-   
 const computerMove=()=>{
     opponentOturn.style.backgroundColor = "blue"
-    let random = Math.floor(Math.random() * 9) 
+    let random = Math.floor(Math.random() * 8) 
     if(!cells[random].innerHTML){
         console.log("found an empty cell")
         if(select=="X"){
@@ -68,20 +114,24 @@ const computerMove=()=>{
     }else{
         computerMove()
     }
-    opponentOturn.style.backgroundColor = "purple"
+    isValidAction()
+    handleResultValidation()
+   // opponentOturn.style.backgroundColor = "purple"
 }
     for(let box of cells){
         box.addEventListener('click', ()=>{
             console.log("clicked a box")
             box.innerText = select
-            computerMove()
-
+            let delayTime = ((Math.random() * 1500) + 200).toFixed()//computer delays randomly b4 playing
+            setTimeout(()=>{
+                computerMove()
+            }, delayTime)//passing the delay time
         })
-    }   
-    // document.querySelector(".board-part").addEventListener('click', ()=>{
-    //     console.log("clicked a box")
-
-    // })
+    } 
+    restartButton.onclick=()=>{
+        window.location.reload()
+    }  
+    
  
     
 

@@ -27,9 +27,9 @@ header{
     font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
-.board{
+/* .board{
     visibility: hidden;
-}
+} */
 .showBoard{
     visibility: visible;
 }
@@ -74,6 +74,9 @@ header{
     padding: 6px;
     border: none;
 }
-.outcome{
+/* .outcome{
     display: none;
+} */
+.showOutcome{
+    visibility: visible;
 }
