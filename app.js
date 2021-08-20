@@ -33,9 +33,12 @@ const positionsOfWin = [
     [2, 4, 6]
 ];
 
+let isGameOn = true
+
 const OpponentX_win = "Yipeee! Opponent(X) won"
 const OpponentO_win = "Yipeee! Opponent(O) won"
 const draw = "It's a draw!"
+
 
 function handleResultValidation() {
     let roundWon = false;
@@ -76,12 +79,17 @@ const winner = (type)=>{
     }
     result.classList.add("showOutcome");
 }
+
 const isValidAction = (cell) => {
     if (cell.innerHTML === 'X' || cell.innerHTML === 'O'){
         return false;
     }
 
     return true;
+}
+
+const updatePlayBoard =  (i) => {
+    playBoard[i] = select;
 }
 
 myFunction=()=>{
@@ -102,7 +110,7 @@ myFunction1=()=>{
    
 const computerMove=()=>{
     opponentOturn.style.backgroundColor = "blue"
-    let random = Math.floor(Math.random() * 8) 
+    let random = Math.floor(Math.random() * 8)
     if(!cells[random].innerHTML){
         console.log("found an empty cell")
         if(select=="X"){
@@ -114,19 +122,20 @@ const computerMove=()=>{
     }else{
         computerMove()
     }
-    isValidAction()
-    handleResultValidation()
    // opponentOturn.style.backgroundColor = "purple"
 }
     for(let box of cells){
         box.addEventListener('click', ()=>{
+            if(isValidAction(box) && isGameOn) {
             console.log("clicked a box")
             box.innerText = select
             let delayTime = ((Math.random() * 1500) + 200).toFixed()//computer delays randomly b4 playing
             setTimeout(()=>{
                 computerMove()
             }, delayTime)//passing the delay time
+        }
         })
+        handleResultValidation()
     } 
     restartButton.onclick=()=>{
         window.location.reload()
